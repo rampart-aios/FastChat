@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fastchat-controller
+spec:
+  containers:
+    - name: controller
+      image: '192.168.62.116:5000/fastchat'
+      command: ["python", "-m", "fastchat.serve.controller"]
+      volumeMounts:
+        - mountPath: /root/app/fastchat
+          name: fastchat-volume
+  volumes:
+    - name: fastchat-volume
+      hostPath:
+        path: /home/xuezhi/FastChat/fastchat
