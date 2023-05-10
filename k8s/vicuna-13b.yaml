@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fastchat-modelworker-vicuna-13b
+spec:
+  hostNetwork: true
+  containers:
+    - name: vicuna-13b
+      image: '192.168.62.116:5000/fastchat:0205'
+      command:
+        - 'python'
+        - '-m'
+        - 'fastchat.serve.model_worker'
+        - '--model-path'
+        - '/root/app/models/vicuna-13b'
+        - '--controller'
+        - 'http://localhost:21001'
+        - '--port'
+        - '31001'
+        - '--worker'
+        - 'http://localhost:31001'
+        - '--gpus'
+        - '0,1'
+      resources:
+        limits:
+          nvidia.com/gpu: 2
+      volumeMounts:
+        - mountPath: /root/app/models
+          name: models-volume
+        - mountPath: /root/app/fastchat
+          name: fastchat-volume
+  volumes:
+    - name: models-volume
+      hostPath:
+        path: /home/FastChat/FastChat-models
+    - name: fastchat-volume
+      hostPath:
+        path: /home/FastChat/FastChat/fastchat

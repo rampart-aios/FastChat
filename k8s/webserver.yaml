@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: fastchat-controller
+  name: fastchat-webserver
 spec:
   hostNetwork: true
   containers:
-    - name: controller
+    - name: webserver
       image: '192.168.62.116:5000/fastchat:0205'
       command:
         - 'python'
         - '-m'
-        - 'fastchat.serve.controller'
+        - 'fastchat.serve.gradio_web_server'
       volumeMounts:
         - mountPath: /root/app/fastchat
           name: fastchat-volume
