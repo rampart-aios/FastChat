@@ -1,5 +1,4 @@
 FROM python:3.8-slim
 WORKDIR /root/app/
-COPY pyproject.toml ./
-RUN pip install --upgrade pip && pip install .
+RUN pip3 install fschat
 #COPY fastchat/ fastchat/
