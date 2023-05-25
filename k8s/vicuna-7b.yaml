@@ -6,13 +6,13 @@ spec:
   hostNetwork: true
   containers:
     - name: vicuna-7b
-      image: '192.168.62.116:5000/fastchat:0205'
+      image: '192.168.62.116:5000/fastchat:k8s'
       command:
         - 'python'
         - '-m'
         - 'fastchat.serve.model_worker'
         - '--model-path'
-        - '/root/app/models/vicuna-7b'
+        - '/models/vicuna-7b'
         - '--controller'
         - 'http://localhost:21001'
         - '--port'
@@ -23,16 +23,11 @@ spec:
         - '0'
       resources:
         limits:
-          nvidia.com/gpu: 1
+          nvidia.com/gpu: '1'
       volumeMounts:
-        - mountPath: /root/app/models
+        - mountPath: /models
           name: models-volume
-        - mountPath: /root/app/fastchat
-          name: fastchat-volume
   volumes:
     - name: models-volume
       hostPath:
         path: /home/FastChat/FastChat-models
-    - name: fastchat-volume
-      hostPath:
-        path: /home/FastChat/FastChat/fastchat

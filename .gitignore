@@ -3,13 +3,12 @@ __pycache__
 *.pyc
 *.egg-info
 dist
+.venv
 
 # Log
 *.log
+*.log.*
 *.json
-
-# Data
-!**/alpaca-data-conversation.json
 
 # Editor
 .idea
@@ -19,3 +18,10 @@ dist
 .DS_Store
 wandb
 output
+
+# Data
+*.pkl
+*.csv
+
+# Build
+build

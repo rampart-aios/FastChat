@@ -6,15 +6,8 @@ spec:
   hostNetwork: true
   containers:
     - name: controller
-      image: '192.168.62.116:5000/fastchat:0205'
+      image: '192.168.62.116:5000/fastchat:k8s'
       command:
         - 'python'
         - '-m'
         - 'fastchat.serve.controller'
-      volumeMounts:
-        - mountPath: /root/app/fastchat
-          name: fastchat-volume
-  volumes:
-    - name: fastchat-volume
-      hostPath:
-        path: /home/FastChat/FastChat/fastchat

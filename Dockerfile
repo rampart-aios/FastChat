@@ -1,5 +1,5 @@
 FROM python:3.8-slim
-WORKDIR /root/app/
+WORKDIR /app/
 COPY pyproject.toml ./
 RUN pip install --upgrade pip && pip install .
-#COPY fastchat/ fastchat/
+COPY fastchat/ ./fastchat/
