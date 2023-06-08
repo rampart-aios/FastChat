@@ -12,8 +12,7 @@ name: Create and publish a Docker image
 on:
   push:
     branches:
-      - "060823"
-      - k8s
+      - "0608b23"
 
 env:
   REGISTRY: ghcr.io
