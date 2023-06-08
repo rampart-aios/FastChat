@@ -4,5 +4,5 @@ RUN rm /usr/bin/pip & ln -s /usr/bin/python3 /usr/bin/python & \
     ln -s /usr/bin/pip3 /usr/bin/pip
 WORKDIR /app/
 COPY pyproject.toml ./
-RUN pip install --upgrade pip && pip install .
+RUN pip install --upgrade pip && pip install linkify-it-py && pip install .
 COPY fastchat/ ./fastchat/
